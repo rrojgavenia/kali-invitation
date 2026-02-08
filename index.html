@@ -5,77 +5,77 @@
 <title>For Kali 🤍</title>
 
 <style>
-html,body{
-  margin:0;
-  height:100%;
-  overflow:hidden;
-  font-family:'Segoe UI',sans-serif;
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
 }
 
-body{
+body {
   background:
-    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
-    url("background.jpg") center/cover no-repeat fixed;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+    url("background.jpg") center / cover no-repeat fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* CARD */
-.card{
-  background:white;
-  padding:40px;
-  border-radius:20px;
-  width:80%;
-  max-width:420px;
-  text-align:center;
-  box-shadow:0 15px 35px rgba(0,0,0,.35);
-  display:none;
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 420px;
+  width: 85%;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,.35);
+  display: none;
 }
 
-.card.active{display:block}
+.card.active { display: block; }
 
-button{
-  padding:12px 26px;
-  border:none;
-  border-radius:25px;
-  background:#ff5e78;
-  color:white;
-  font-size:16px;
-  cursor:pointer;
-  margin:6px;
+button {
+  padding: 12px 26px;
+  border: none;
+  border-radius: 25px;
+  background: #ff5e78;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 6px;
 }
 
-/* LOVE TEXT */
-.love{
-  margin-top:20px;
-  font-size:42px;
-  font-weight:900;
-  color:#ff2f6d;
+/* GLOW TEXT */
+.love {
+  margin-top: 20px;
+  font-size: 42px;
+  font-weight: 900;
+  color: #ff2f6d;
   text-shadow:
     0 0 10px #ff2f6d,
     0 0 25px #ff6f91,
     0 0 45px #ff9a9e;
-  animation:pulse 2s infinite;
+  animation: pulse 2s infinite;
 }
 
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.1)}
-  100%{transform:scale(1)}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 /* HEARTS */
-.heart{
-  position:fixed;
-  bottom:-20px;
-  font-size:26px;
-  animation:floatUp 5s linear forwards;
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 26px;
+  animation: floatUp 5s linear forwards;
 }
 
-@keyframes floatUp{
-  from{transform:translateY(0);opacity:1}
-  to{transform:translateY(-120vh);opacity:0}
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-120vh); opacity: 0; }
 }
 </style>
 </head>
@@ -83,7 +83,7 @@ button{
 <body>
 
 <audio id="music" loop>
-  <source src="https://drive.google.com/uc?export=download&id=1_ieDM8xKY3aa8KjBsy-Djw1GQ1F4jaNS" type="audio/mpeg">
+  <source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <div class="card active" id="p1">
@@ -95,29 +95,27 @@ button{
 <div class="card" id="p2">
   <h2>Hi Kali 🤍</h2>
   <p>
-    I’d be the happiest and most grateful man  
-    if you’d accept this little invitation  
+    I’d be the happiest and most grateful man<br>
+    if you’d accept this little invitation<br>
     from my heart.
   </p>
-  <button onclick="next(2)">Next</button>
+  <button onclick="next('p3')">Next</button>
 </div>
 
 <div class="card" id="p3">
   <p>
-    Would you like to be my date  
+    Would you like to be my date<br>
     this <strong>February 15</strong>?
   </p>
-  <button onclick="next(3)">Next</button>
+  <button onclick="next('p4')">Next</button>
 </div>
 
 <div class="card" id="p4">
   <p>
-    It will almost be our <strong>29th monthsary</strong>,  
-    and I want to celebrate it early—  
-    because every moment with you  
-    feels worth celebrating.
+    It will almost be our <strong>29th monthsary</strong>,<br>
+    and every moment with you feels worth celebrating.
   </p>
-  <button onclick="next(4)">Next</button>
+  <button onclick="next('p5')">Next</button>
 </div>
 
 <div class="card" id="p5">
@@ -143,40 +141,40 @@ button{
 </div>
 
 <script>
-const music=document.getElementById("music");
+const music = document.getElementById("music");
 
-function start(){
+function start() {
   music.play();
   show("p2");
 }
 
-function next(n){
-  show("p"+(n+1));
+function next(id) {
+  show(id);
 }
 
-function yes(){
+function yes() {
   show("final");
+  startHearts();
 }
 
-function no(){
+function no() {
   show("nope");
 }
 
-function show(id){
-  document.querySelectorAll(".card").forEach(c=>c.classList.remove("active"));
+function show(id) {
+  document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 }
 
-/* HEARTS */
-setInterval(()=>{
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="💖";
-  h.style.left=Math.random()*100+"vw";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),5000);
-},600);
-</script>
-
-</body>
-</html>
+/* HEARTS ONLY AT THE END */
+let heartsStarted = false;
+function startHearts() {
+  if (heartsStarted) return;
+  heartsStarted = true;
+  setInterval(() => {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "💖";
+    h.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(h);
+    setTime

@@ -8,8 +8,8 @@
 html, body {
   margin: 0;
   height: 100%;
-  font-family: Arial, sans-serif;
   overflow: hidden;
+  font-family: Arial, sans-serif;
 }
 
 body {
@@ -33,7 +33,9 @@ body {
   display: none;
 }
 
-.card.active { display: block; }
+.card.active {
+  display: block;
+}
 
 button {
   padding: 12px 26px;
@@ -99,7 +101,7 @@ button {
     if you’d accept this little invitation<br>
     from my heart.
   </p>
-  <button onclick="next('p3')">Next</button>
+  <button onclick="go('p3')">Next</button>
 </div>
 
 <div class="card" id="p3">
@@ -107,7 +109,7 @@ button {
     Would you like to be my date<br>
     this <strong>February 15</strong>?
   </p>
-  <button onclick="next('p4')">Next</button>
+  <button onclick="go('p4')">Next</button>
 </div>
 
 <div class="card" id="p4">
@@ -115,7 +117,7 @@ button {
     It will almost be our <strong>29th monthsary</strong>,<br>
     and every moment with you feels worth celebrating.
   </p>
-  <button onclick="next('p5')">Next</button>
+  <button onclick="go('p5')">Next</button>
 </div>
 
 <div class="card" id="p5">
@@ -144,12 +146,12 @@ button {
 const music = document.getElementById("music");
 
 function start() {
+  // audio may fail — we ignore it so page always advances
   music.play().catch(() => {});
   show("p2");
 }
-}
 
-function next(id) {
+function go(id) {
   show(id);
 }
 
@@ -167,16 +169,22 @@ function show(id) {
   document.getElementById(id).classList.add("active");
 }
 
-/* HEARTS ONLY AT THE END */
+/* HEARTS ONLY AT FINAL */
 let heartsStarted = false;
 function startHearts() {
   if (heartsStarted) return;
   heartsStarted = true;
+
   setInterval(() => {
     const h = document.createElement("div");
     h.className = "heart";
     h.innerHTML = "💖";
     h.style.left = Math.random() * 100 + "vw";
     document.body.appendChild(h);
-    setTime
+    setTimeout(() => h.remove(), 5000);
+  }, 600);
+}
+</script>
 
+</body>
+</html>

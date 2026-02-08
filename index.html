@@ -9,14 +9,13 @@ html,body{
   margin:0;
   height:100%;
   overflow:hidden;
-  font-family:Arial, sans-serif;
+  font-family:'Segoe UI',sans-serif;
 }
 
 body{
   background:
     linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
-    url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUTEhMWFhUXGBgYGBgYFxgXGBgYGBUXGBgYGBgYHSggGBolGxcXITEhJSkrLi4uGB8zODMsNygtLisBCgoKDg0OGxAQGy0lHyUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOEA4QMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAAFBgIEBwEDAv/EAD0QAAIBAgMFBgQEBQUAAAAAAAECAwQRAAUSITEGE0FRYXEicYEUMoGRobHB0RQjUmJy8SNS4f/EABkBAAMBAQEAAAAAAAAAAAAAAAABAgMEBf/EACURAAMBAAICAgIDAQAAAAAAAAABAhEDITEEEkFRImFxgaH/2gAMAwEAAhEDEQA/AP2iiiiiioooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//Z")
-    center/cover no-repeat fixed;
+    url("background.jpg") center/cover no-repeat fixed;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -24,7 +23,7 @@ body{
 
 /* CARD */
 .card{
-  background:#fff;
+  background:white;
   padding:40px;
   border-radius:20px;
   width:80%;
@@ -32,7 +31,6 @@ body{
   text-align:center;
   box-shadow:0 15px 35px rgba(0,0,0,.35);
   display:none;
-  z-index:2;
 }
 
 .card.active{display:block}
@@ -42,10 +40,10 @@ button{
   border:none;
   border-radius:25px;
   background:#ff5e78;
-  color:#fff;
+  color:white;
   font-size:16px;
   cursor:pointer;
-  margin:5px;
+  margin:6px;
 }
 
 /* LOVE TEXT */
@@ -73,7 +71,6 @@ button{
   bottom:-20px;
   font-size:26px;
   animation:floatUp 5s linear forwards;
-  z-index:1;
 }
 
 @keyframes floatUp{
@@ -85,7 +82,7 @@ button{
 
 <body>
 
-<audio id="music">
+<audio id="music" loop>
   <source src="https://drive.google.com/uc?export=download&id=1_ieDM8xKY3aa8KjBsy-Djw1GQ1F4jaNS" type="audio/mpeg">
 </audio>
 
@@ -132,8 +129,7 @@ button{
 <div class="card" id="nope">
   <p>
     That’s funny 😌<br><br>
-    I think you misclicked  
-    and meant to press <strong>YES</strong>.
+    You were supposed to click <strong>YES</strong>.
   </p>
   <button onclick="yes()">YES!</button>
 </div>

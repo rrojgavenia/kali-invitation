@@ -144,8 +144,9 @@ button {
 const music = document.getElementById("music");
 
 function start() {
-  music.play();
+  music.play().catch(() => {});
   show("p2");
+}
 }
 
 function next(id) {
@@ -178,3 +179,4 @@ function startHearts() {
     h.style.left = Math.random() * 100 + "vw";
     document.body.appendChild(h);
     setTime
+

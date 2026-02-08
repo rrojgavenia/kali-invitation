@@ -44,7 +44,9 @@ button{
   margin:6px;
 }
 
+/* GLOWING LOVE TEXT */
 .love{
+  margin-top:20px;
   font-size:42px;
   font-weight:900;
   color:#ff2f6d;
@@ -61,6 +63,7 @@ button{
   100%{transform:scale(1)}
 }
 
+/* FLOATING HEARTS */
 .heart{
   position:fixed;
   bottom:-20px;
@@ -77,49 +80,43 @@ button{
 
 <body>
 
-<audio id="music" src="song.mp3"></audio>
-
 <div class="card show" id="p1">
-  <h2>Before we begin… 🎶</h2>
-  <p>Tap below to play our song.</p>
-  <button onclick="
-    document.getElementById('music').play();
-    p1.classList.remove('show');
-    p2.classList.add('show');
-  ">Play Music</button>
-</div>
-
-<div class="card" id="p2">
   <h2>Hi Kali 🤍</h2>
   <p>
     I’d be the happiest and most grateful man<br>
     if you’d accept this little invitation<br>
     from my heart.
   </p>
+  <button onclick="p1.classList.remove('show');p2.classList.add('show')">Next</button>
+</div>
+
+<div class="card" id="p2">
+  <p>
+    Would you like to be my date<br>
+    this <strong>February 15</strong>?
+  </p>
   <button onclick="p2.classList.remove('show');p3.classList.add('show')">Next</button>
 </div>
 
 <div class="card" id="p3">
-  <p>Would you like to be my date<br><strong>February 15</strong>?</p>
-  <button onclick="p3.classList.remove('show');p4.classList.add('show')">Next</button>
-</div>
-
-<div class="card" id="p4">
   <p>
     It will almost be our <strong>29th monthsary</strong>,<br>
     and every moment with you feels worth celebrating.
   </p>
-  <button onclick="p4.classList.remove('show');p5.classList.add('show')">Next</button>
+  <button onclick="p3.classList.remove('show');p4.classList.add('show')">Next</button>
 </div>
 
-<div class="card" id="p5">
+<div class="card" id="p4">
   <p>Will you be my date?</p>
   <button onclick="showFinal()">Yes 💕</button>
-  <button onclick="p5.classList.remove('show');nope.classList.add('show')">No 🙃</button>
+  <button onclick="p4.classList.remove('show');nope.classList.add('show')">No 🙃</button>
 </div>
 
 <div class="card" id="nope">
-  <p>You misclicked 😌</p>
+  <p>
+    That’s funny 😌<br><br>
+    You were supposed to click <strong>YES</strong>.
+  </p>
   <button onclick="showFinal()">YES!</button>
 </div>
 
